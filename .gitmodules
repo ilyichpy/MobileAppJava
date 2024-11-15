@@ -1,0 +1,3 @@
+[submodule "BackendJava"]
+	path = BackendJava
+	url = git@github.com:ilyichpy/BackendJava.git
