@@ -1,5 +1,0 @@
-<resources>
-    <color name="primaryColor">#6200EE</color> <!-- Цвет для кнопок -->
-    <color name="gray">#BDBDBD</color>         <!-- Цвет для рамок полей ввода -->
-    <color name="white">#FFFFFF</color>        <!-- Основной белый цвет -->
-</resources>
