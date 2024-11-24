@@ -210,7 +210,6 @@ public class AnimalDetailActivity extends AppCompatActivity {
             }
 
             Toast.makeText(this, "Будильник на кормление установлен", Toast.LENGTH_SHORT).show();
-
         } catch (Exception e) {
             e.printStackTrace();
             Toast.makeText(this, "Неверный формат времени", Toast.LENGTH_SHORT).show();
