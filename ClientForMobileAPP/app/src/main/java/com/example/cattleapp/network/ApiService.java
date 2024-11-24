@@ -1,29 +1,25 @@
 package com.example.cattleapp.network;
 
 import com.example.cattleapp.models.Animal;
-import com.example.cattleapp.models.User;
+import com.example.cattleapp.models.Farmer;
 
 import java.util.List;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
-import retrofit2.http.GET;
 import retrofit2.http.POST;
-import retrofit2.http.PUT;
-import retrofit2.http.Path;
-import retrofit2.http.Query;
 
 public interface ApiService {
 
     @POST("api/v1/send_code")
-    Call<ResponseBody> register(@Body User user);
+    Call<ResponseBody> register(@Body Farmer farmer);
 
     @POST("api/v1/login")
-    Call<User> login(@Body User user);
+    Call<Farmer> login(@Body Farmer farmer);
 
     @POST("api/v1/verify")
-    Call<ResponseBody> verifyCode(@Body User user);
+    Call<ResponseBody> verifyCode(@Body Farmer farmer);
 
     @POST("api/v1/animals")
     Call<List<Animal>> getAnimals(@Body int ownerId);

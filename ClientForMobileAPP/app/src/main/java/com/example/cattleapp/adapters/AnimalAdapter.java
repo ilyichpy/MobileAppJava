@@ -36,7 +36,6 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalViewHolder> {
         holder.textViewAnimalName.setText(animal.getName());
         holder.textViewAnimalDetails.setText("Тип: " + animal.getType() + ", Возраст: " + animal.getAge() + " лет");
 
-        // Обработка нажатия на элемент списка
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, AnimalDetailActivity.class);
             intent.putExtra("animalId", animal.getId());

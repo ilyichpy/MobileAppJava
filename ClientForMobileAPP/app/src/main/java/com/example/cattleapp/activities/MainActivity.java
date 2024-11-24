@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private AnimalAdapter animalAdapter;
 
     private ApiService apiService;
-    private int userId; // Получите ID пользователя после авторизации
+    private int userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,9 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
         loadAnimals();
 
-        // Обработка нажатия на FAB
         fabAddAnimal.setOnClickListener(v -> {
-            // Открыть экран добавления животного
             Intent intent = new Intent(MainActivity.this, AnimalDetailActivity.class);
             intent.putExtra("userId", userId);
             startActivity(intent);

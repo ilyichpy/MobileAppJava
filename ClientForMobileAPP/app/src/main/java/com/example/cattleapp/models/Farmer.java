@@ -1,22 +1,18 @@
 package com.example.cattleapp.models;
 
-public class User {
+public class Farmer {
     private int id;
     private String email;
     private String password;
     private String code;
 
-    // Конструкторы
-
-    public User() {
+    public Farmer() {
     }
 
-    public User(String email, String password) {
+    public Farmer(String email, String password) {
         this.email = email;
         this.password = password;
     }
-
-    // Геттеры и сеттеры
 
     public int getId() {
         return id;

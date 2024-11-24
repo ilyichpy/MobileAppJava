@@ -9,7 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.cattleapp.R;
-import com.example.cattleapp.models.User;
+import com.example.cattleapp.models.Farmer;
 import com.example.cattleapp.network.ApiClient;
 import com.example.cattleapp.network.ApiService;
 
@@ -31,17 +31,14 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        // Инициализация элементов UI
         editTextEmail = findViewById(R.id.editTextEmail);
         editTextPassword = findViewById(R.id.editTextPassword);
         editTextConfirmPassword = findViewById(R.id.editTextConfirmPassword);
         buttonRegister = findViewById(R.id.buttonRegister);
         textViewLogin = findViewById(R.id.textViewLogin);
 
-        // Инициализация ApiService
         apiService = ApiClient.getClient().create(ApiService.class);
 
-        // Обработка нажатия на кнопку "Зарегистрироваться"
         buttonRegister.setOnClickListener(v -> {
             String email = editTextEmail.getText().toString().trim();
             String password = editTextPassword.getText().toString().trim();
@@ -56,7 +53,6 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
-        // Обработка нажатия на текст "Войти"
         textViewLogin.setOnClickListener(v -> {
             Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
             startActivity(intent);
@@ -65,9 +61,9 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void register(String email, String password) {
-        User user = new User(email, password);
+        Farmer farmer = new Farmer(email, password);
 
-        Call<ResponseBody> call = apiService.register(user);
+        Call<ResponseBody> call = apiService.register(farmer);
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {

@@ -10,7 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.example.cattleapp.R;
 
-import com.example.cattleapp.models.User;
+import com.example.cattleapp.models.Farmer;
 import com.example.cattleapp.network.ApiClient;
 import com.example.cattleapp.network.ApiService;
 
@@ -33,18 +33,14 @@ public class VerificationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verification);
 
-        // Инициализация элементов UI
         textViewInstructions = findViewById(R.id.textViewInstructions);
         editTextCode = findViewById(R.id.editTextCode);
         buttonVerify = findViewById(R.id.buttonVerify);
 
-        // Получаем email из Intent
         email = getIntent().getStringExtra("email");
 
-        // Инициализация ApiService
         apiService = ApiClient.getClient().create(ApiService.class);
 
-        // Обработка нажатия на кнопку "Подтвердить"
         buttonVerify.setOnClickListener(v -> {
             String code = editTextCode.getText().toString().trim();
             if (code.isEmpty()) {
@@ -56,17 +52,16 @@ public class VerificationActivity extends AppCompatActivity {
     }
 
     private void verifyCode(String code) {
-        User user = new User();
-        user.setEmail(email);
-        user.setCode(code);
+        Farmer farmer = new Farmer();
+        farmer.setEmail(email);
+        farmer.setCode(code);
 
-        Call<ResponseBody> call = apiService.verifyCode(user);
+        Call<ResponseBody> call = apiService.verifyCode(farmer);
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if(response.isSuccessful()) {
                     Toast.makeText(VerificationActivity.this, "Успешно подтверждено", Toast.LENGTH_SHORT).show();
-                    // Переходим на экран входа
                     Intent intent = new Intent(VerificationActivity.this, LoginActivity.class);
                     startActivity(intent);
                     finish();

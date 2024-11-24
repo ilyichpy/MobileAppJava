@@ -10,7 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.example.cattleapp.R;
 
-import com.example.cattleapp.models.User;
+import com.example.cattleapp.models.Farmer;
 import com.example.cattleapp.network.ApiClient;
 import com.example.cattleapp.network.ApiService;
 
@@ -31,16 +31,13 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        // Инициализация элементов UI
         editTextEmail = findViewById(R.id.editTextEmail);
         editTextPassword = findViewById(R.id.editTextPassword);
         buttonLogin = findViewById(R.id.buttonLogin);
         textViewRegister = findViewById(R.id.textViewRegister);
 
-        // Инициализация ApiService
         apiService = ApiClient.getClient().create(ApiService.class);
 
-        // Обработка нажатия на кнопку "Войти"
         buttonLogin.setOnClickListener(v -> {
             String email = editTextEmail.getText().toString().trim();
             String password = editTextPassword.getText().toString().trim();
@@ -52,7 +49,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        // Обработка нажатия на текст "Зарегистрироваться"
         textViewRegister.setOnClickListener(v -> {
             Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
             startActivity(intent);
@@ -60,16 +56,16 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void login(String email, String password) {
-        User user = new User(email, password);
+        Farmer farmer = new Farmer(email, password);
 
-        Call<User> call = apiService.login(user);
-        call.enqueue(new Callback<User>() {
+        Call<Farmer> call = apiService.login(farmer);
+        call.enqueue(new Callback<Farmer>() {
             @Override
-            public void onResponse(Call<User> call, Response<User> response) {
+            public void onResponse(Call<Farmer> call, Response<Farmer> response) {
                 if (response.isSuccessful()) {
-                    User loggedInUser = response.body();
+                    Farmer loggedInFarmer = response.body();
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    intent.putExtra("userId", loggedInUser.getId());
+                    intent.putExtra("userId", loggedInFarmer.getId());
                     startActivity(intent);
                     finish();
                 } else {
@@ -78,7 +74,7 @@ public class LoginActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<User> call, Throwable t) {
+            public void onFailure(Call<Farmer> call, Throwable t) {
                 Toast.makeText(LoginActivity.this, "Ошибка сети: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });

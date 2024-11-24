@@ -10,7 +10,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Поле для имени животного -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -23,7 +22,6 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"/>
 
-        <!-- Поле для типа животного -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -36,7 +34,6 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"/>
 
-        <!-- Поле для возраста животного -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -50,7 +47,6 @@
             android:inputType="number"
             android:layout_marginBottom="16dp"/>
 
-        <!-- Поле для времени кормления -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -65,7 +61,6 @@
             android:inputType="time"
             android:layout_marginBottom="16dp"/>
 
-        <!-- Кнопка "Сохранить" -->
         <Button
             android:id="@+id/buttonSave"
             android:layout_width="match_parent"

@@ -42,26 +42,21 @@ public class AnimalDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_animal_detail);
 
-        // Инициализация элементов UI
         editTextName = findViewById(R.id.editTextName);
         editTextType = findViewById(R.id.editTextType);
         editTextAge = findViewById(R.id.editTextAge);
         editTextFeedingTime = findViewById(R.id.editTextFeedingTime);
         buttonSave = findViewById(R.id.buttonSave);
 
-        // Получение animalId из Intent
         animalId = getIntent().getIntExtra("animalId", -1);
         userId = getIntent().getIntExtra("userId", -1);
 
-        // Инициализация ApiService
         apiService = ApiClient.getClient().create(ApiService.class);
 
         if (animalId != -1) {
-            // Загрузка информации о животном
             loadAnimalDetails();
         }
 
-        // Обработка нажатия на кнопку "Сохранить"
         buttonSave.setOnClickListener(v -> {
             saveAnimalDetails();
         });

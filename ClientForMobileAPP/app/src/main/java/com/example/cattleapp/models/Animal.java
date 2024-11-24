@@ -8,8 +8,6 @@ public class Animal {
     private String feedingTime;
     private int ownerId;
 
-    // Конструкторы
-
     public Animal() {
     }
 
@@ -21,8 +19,6 @@ public class Animal {
         this.ownerId = ownerId;
     }
 
-
-    // Геттеры и сеттеры
 
     public int getId() {
         return id;
